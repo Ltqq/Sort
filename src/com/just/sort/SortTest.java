@@ -7,7 +7,9 @@ public class SortTest {
 
 //        new SortTest().ShellSort(a);
 //        new SortTest().BubbleSort(a);
-        new SortTest().QuickSort(a, 0, a.length-1);
+
+//        new SortTest().QuickSort(a, 0, a.length-1);
+        new SortTest().SelectSort(a);
         for (int i = 1; i < a.length; i++) {
             System.out.println(a[i]);
         }
@@ -92,10 +94,29 @@ public class SortTest {
     }
 
     public void QuickSort(int[] r, int first, int end) {
-        if(first<end){
+        if (first < end) {
             int pivot = Partition(r, first, end);
-            QuickSort(r, first, pivot-1);
-            QuickSort(r, pivot+1, end);
+            QuickSort(r, first, pivot - 1);
+            QuickSort(r, pivot + 1, end);
         }
     }
+
+
+    //选择排序O(n²)
+    public void SelectSort(int[] r) {
+        for (int i = 1; i < r.length ; i++) {
+            int index = i;
+            for (int j = i + 1; j <= r.length - 1; j++) {
+                if (r[j] < r[index]) {
+                    index = j;
+                }
+            }
+            if (index != i) {
+                r[0] = r[index];
+                r[index] = r[i];
+                r[i] = r[0];
+            }
+        }
+    }
+
 }
