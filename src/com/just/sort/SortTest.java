@@ -13,7 +13,7 @@ public class SortTest {
         }
     }
 
-    //直接插入排序
+    //直接插入排序 O(n²)
     public void InsertSort(int[] r) {
         if (r == null || r.length < 2) {
             return;
@@ -28,7 +28,7 @@ public class SortTest {
         }
     }
 
-    //希尔排序
+    //希尔排序 O(n1.3)
     public void ShellSort(int[] r) {
         if (r == null || r.length < 2) {
             return;
@@ -45,7 +45,7 @@ public class SortTest {
         }
     }
 
-    //冒泡排序
+    //冒泡排序O(n²)
     public void BubbleSort(int[] r) {
         int exchange = r.length - 1;
         while (exchange != 0) {
@@ -63,7 +63,7 @@ public class SortTest {
         }
     }
 
-    //快速排序
+    //快速排序O(nlog₂n)
     public int Partition(int[] r, int first, int end) {
         int i = first;
         int j = end;
