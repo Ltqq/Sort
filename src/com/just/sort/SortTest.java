@@ -9,7 +9,8 @@ public class SortTest {
 //        new SortTest().BubbleSort(a);
 
 //        new SortTest().QuickSort(a, 0, a.length-1);
-        new SortTest().SelectSort(a);
+//        new SortTest().SelectSort(a);
+        new SortTest().HeapSort(a, 10);
         for (int i = 1; i < a.length; i++) {
             System.out.println(a[i]);
         }
@@ -101,10 +102,9 @@ public class SortTest {
         }
     }
 
-
     //选择排序O(n²)
     public void SelectSort(int[] r) {
-        for (int i = 1; i < r.length ; i++) {
+        for (int i = 1; i < r.length; i++) {
             int index = i;
             for (int j = i + 1; j <= r.length - 1; j++) {
                 if (r[j] < r[index]) {
@@ -119,4 +119,34 @@ public class SortTest {
         }
     }
 
+    //堆排序O(nlog₂n)
+    public void Sift(int[] r, int k, int m) {
+        int i = k;
+        int j = 2 * i;
+        while (j <= m) {
+            if (j < m && r[j] < r[j + 1]) {
+                j++;
+            }
+            if (r[i] > r[j]) break;
+            else {
+                r[0] = r[i];
+                r[i] = r[j];
+                r[j] = r[0];
+                i = j;
+                j = 2 * i;
+            }
+        }
+    }
+
+    public void HeapSort(int[] r, int n) {
+        for (int i = n / 2; i >= 1; i--) {
+            Sift(r, i, n);
+        }
+        for (int i = 1; i < n; i++) {
+            r[0] = r[n - i + 1];
+            r[n - i + 1] = r[1];
+            r[1] = r[0];
+            Sift(r, 1, n - i);
+        }
+    }
 }
